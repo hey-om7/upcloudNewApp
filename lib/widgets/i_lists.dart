@@ -480,6 +480,7 @@ Future chewingTobaccoBottomPullup(BuildContext context) {
 
 class SmokingBottomPullupStateful extends StatefulWidget {
   final context;
+
   SmokingBottomPullupStateful(this.context);
   @override
   _SmokingBottomPullupStatefulState createState() =>
@@ -490,7 +491,12 @@ class _SmokingBottomPullupStatefulState
     extends State<SmokingBottomPullupStateful> {
   @override
   Widget build(BuildContext context) {
-    return showModalBottomSheet(
+    return Container();
+  }
+}
+
+Future smokingBottomPullup(BuildContext context) {
+  return showModalBottomSheet(
       context: context,
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
@@ -658,12 +664,7 @@ class _SmokingBottomPullupStatefulState
           },
         );
       });
-
-  }
 }
-
-// Future smokingBottomPullup(BuildContext context) {
-//   return }
 
 Future drinkingBottomPopup(BuildContext context) {
   return showModalBottomSheet(
