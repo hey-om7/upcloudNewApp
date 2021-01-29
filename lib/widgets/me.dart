@@ -9,6 +9,8 @@ Padding listItem_me(mainhead, subtype, [BuildContext context]) {
       onTap: () {
         if (mainhead == 'Emergency Contact') {
           emergencyBottomPullup(context);
+        } else if (mainhead == 'State') {
+          stateBottomPullup(context);
         } else {
           newShowModalBottomSheet(context);
         }

@@ -1,6 +1,7 @@
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:upcloud_profile_page/widgets/relations.dart';
 
+import '../testOm.dart';
 import 'i.dart';
 import 'package:flutter/material.dart';
 
@@ -666,6 +667,14 @@ Future smokingBottomPullup(BuildContext context) {
       });
 }
 
+dynamic drinkingList = [
+  "I don't drink",
+  "I have tried",
+  "I drink sometimes",
+  "I drink occassionally",
+  "I drink regularly"
+];
+
 Future drinkingBottomPopup(BuildContext context) {
   return showModalBottomSheet(
       context: context,
@@ -732,62 +741,33 @@ Future drinkingBottomPopup(BuildContext context) {
                         ),
                       ),
                       SizedBox(height: 150),
+
+                      ...List.generate(drinkingList.length, (index) {
+                        return Column(children: [
+                          
                       InkWell(
-                        onTap: () {
-                          print('tapped!');
-                        },
-                        child: newItemList(context, "I don't drink"),
-                      ),
-                      CustomDivider(),
-                      InkWell(
-                        onTap: () {
-                          print('tapped!');
-                        },
-                        child: newItemList(context, 'I have tried'),
-                      ),
-                      CustomDivider(),
-                      InkWell(
-                        onTap: () {
-                          print('tapped!');
-                        },
-                        child: newItemList(context, 'I drink sometimes'),
-                      ),
-                      CustomDivider(),
-                      InkWell(
-                        onTap: () {
-                          print('tapped!');
-                        },
-                        child: newItemList(context, "I drink occassionally"),
-                      ),
-                      CustomDivider(),
-                      InkWell(
-                        onTap: () {
-                          print('tapped!');
-                        },
-                        child: newItemList(context, "I drink regularly"),
-                      ),
-                      CustomDivider(),
-                      InkWell(
-                        onTap: () {
-                          print('tapped!');
-                        },
-                        child: newItemList(context, "I drink regularly"),
-                      ),
-                      CustomDivider(),
-                      InkWell(
-                        onTap: () {
-                          print('tapped!');
-                        },
-                        child: newItemList(context, "I drink regularly"),
-                      ),
-                      CustomDivider(),
-                      InkWell(
-                        onTap: () {
-                          print('tapped!');
-                        },
-                        child: newItemList(context, "I drink regularly"),
-                      ),
-                      CustomDivider(),
+              onTap: () {
+                print(index.toString()+"tapped");
+              },
+
+                  child: Container(
+              color: Colors.white,
+              margin: EdgeInsets.fromLTRB(44, 10, 44, 0),
+              width: MediaQuery.of(context).size.width,
+              child: Row(
+                    children: [
+            Text(
+              drinkingList[index],
+              style: TextStyle(fontWeight: FontWeight.w700, fontSize: 16),
+            ),
+            Spacer(),
+            Icon(Icons.check)
+          ],
+      )),
+        ),
+      CustomDivider(),
+                        ]);
+                      }),
                     ],
                     controller: controller,
                   ),
