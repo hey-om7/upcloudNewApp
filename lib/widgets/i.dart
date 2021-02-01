@@ -11,8 +11,7 @@ Padding listItem_i(mainhead, subtype, [BuildContext context]) {
           print('Drinking Selected!');
           drinkingBottomPopup(context);
         } else if (mainhead == 'Smoking') {
-          // smokingBottomPullup(context);
-          SmokingBottomPullupStateful(context);
+          smokingBottomPullup(context);
         } else if (mainhead == 'Chewing Tobacco') {
           chewingTobaccoBottomPullup(context);
         } else if (mainhead == 'Lifestyle') {
