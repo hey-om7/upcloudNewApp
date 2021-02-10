@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:upcloud_profile_page/relationships.dart';
 import 'package:upcloud_profile_page/widgets/relations.dart';
 //import 'package:upcloud_profile_page/bottomNavig.dart';
 import '../globals.dart' as globals;
@@ -39,7 +40,7 @@ Row peopleProf(image, name, BuildContext context, [icon]) {
                         Navigator.push(
                             context,
                             new MaterialPageRoute(
-                                builder: (context) => Relations()));
+                                builder: (context) => RelationShip()));
                         // globals.data.length = globals.data.length + 1;
                         // globals.data[globals.data.length] =
                         //     peopleProf('Girl', 'Sister');

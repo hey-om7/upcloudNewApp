@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:upcloud_profile_page/relationships.dart';
 import 'package:upcloud_profile_page/widgets/bottom_navbar.dart';
 import '../widgets/have.dart';
 import '../widgets/i.dart';
@@ -57,13 +58,18 @@ class _DemoState extends State<Demo> {
             return <Widget>[
               SliverAppBar(
                 actions: [
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 20, 30, 0),
-                    child: Text('Edit',
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 14,
-                            fontWeight: FontWeight.w300)),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(context, new MaterialPageRoute(builder: (context) => RelationShip(),));
+                    },
+                                      child: Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 20, 30, 0),
+                      child: Text('Edit',
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w300)),
+                    ),
                   )
                 ],
                 // leading: ,
