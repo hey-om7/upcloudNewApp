@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:upcloud_profile_page/profile/edit_profile.dart';
+import 'package:upcloud_profile_page/profile/profile.dart';
 import 'package:upcloud_profile_page/relationships.dart';
 import 'package:upcloud_profile_page/widgets/bottom_navbar.dart';
 import '../widgets/have.dart';
@@ -60,9 +62,13 @@ class _DemoState extends State<Demo> {
                 actions: [
                   GestureDetector(
                     onTap: () {
-                      Navigator.push(context, new MaterialPageRoute(builder: (context) => RelationShip(),));
+                      // Navigator.push(
+                      //     context,
+                      //     new MaterialPageRoute(
+                      //       builder: (context) => EditProfile(),
+                      //     ));
                     },
-                                      child: Padding(
+                    child: Padding(
                       padding: const EdgeInsets.fromLTRB(0, 20, 30, 0),
                       child: Text('Edit',
                           style: TextStyle(

@@ -45,26 +45,36 @@ class MeLists extends StatefulWidget {
 class _MeListsState extends State<MeLists> {
   @override
   Widget build(BuildContext context) {
-    return AnimatedContainer(
-      duration: Duration(seconds: 1),
-      child: Form(
-        child: Column(
-          //mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SizedBox(height: 20),
-            listItem_me('Contacts', '', context),
-            CustomDivider(),
-            listItem_me('Emergency Contact', '', context),
-            CustomDivider(),
-            listItem_me('Email', 'moharora8@gmail.com', context),
-            CustomDivider(),
-            listItem_me('D.O.B', '13/12/2001', context),
-            CustomDivider(),
-            listItem_me('Status', 'Mostly Active', context),
-            CustomDivider(),
-            listItem_me('State', 'Maharashtra', context),
-            CustomDivider(),
-          ],
+    return SingleChildScrollView(
+      child: AnimatedContainer(
+        duration: Duration(seconds: 1),
+        child: Form(
+          child: Column(
+            //mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(height: 20),
+              listItem_me('My Contact', '', context),
+              CustomDivider(),
+              listItem_me('Emergency Contact', '', context),
+              CustomDivider(),
+              listItem_me('Email', 'moharora8@gmail.com', context),
+              CustomDivider(),
+              listItem_me('D.O.B', '13/12/2001', context),
+              CustomDivider(),
+              listItem_me('Status', 'Mostly Active', context),
+              CustomDivider(),
+              listItem_me('State', 'Maharashtra', context),
+              CustomDivider(),
+              listItem_me('City', '', context),
+              CustomDivider(),
+              listItem_me('Location', '', context),
+              CustomDivider(),
+              listItem_me('Height', 'Maharashtra', context),
+              CustomDivider(),
+              listItem_me('Weight', 'Maharashtra', context),
+              CustomDivider(),
+            ],
+          ),
         ),
       ),
     );

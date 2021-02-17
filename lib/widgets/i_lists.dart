@@ -29,7 +29,7 @@ dynamic foodPreferenceList = [
 ];
 
 Future foodPrefrenceBottomPullup(BuildContext context) {
-  int selectedIndex = 0;
+  int selectedIndex;
   return showModalBottomSheet(
       context: context,
       shape: RoundedRectangleBorder(
@@ -98,42 +98,45 @@ Future foodPrefrenceBottomPullup(BuildContext context) {
                           ),
                         ),
                         SizedBox(height: 150),
-                        
                         ...List.generate(foodPreferenceList.length, (index) {
-                          return Column(children: [
-                            InkWell(
-                              onTap: () {
-                                print(index.toString() + " tapped");
-                                if (selectedIndex != index) {
+                          return Column(
+                            children: [
+                              InkWell(
+                                onTap: () {
                                   setState1(() {
-                                    selectedIndex = index;
+                                    foodPreferenceValue =
+                                        foodPreferenceList[index];
                                   });
-                                }
-                              },
-                              child: Container(
-                                  color: Colors.white,
-                                  margin: EdgeInsets.fromLTRB(44, 10, 44, 0),
-                                  width: MediaQuery.of(context).size.width,
-                                  child: Row(
-                                    children: [
-                                      Text(
-                                        foodPreferenceList[index],
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w700,
-                                            fontSize: 16),
-                                      ),
-                                      Spacer(),
-                                      (index == selectedIndex)
-                                          ? Icon(Icons.check)
-                                          : Icon(null),
-                                    ],
-                                  )),
-                            ),
-                            CustomDivider(),
-                          ],);
-                          
-                         
-                            
+                                  print(index.toString() + " tapped");
+                                  if (selectedIndex != index) {
+                                    setState1(() {
+                                      selectedIndex = index;
+                                    });
+                                  }
+                                },
+                                child: Container(
+                                    color: Colors.white,
+                                    margin: EdgeInsets.fromLTRB(44, 10, 44, 0),
+                                    width: MediaQuery.of(context).size.width,
+                                    child: Row(
+                                      children: [
+                                        Text(
+                                          foodPreferenceList[index],
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w700,
+                                              fontSize: 16),
+                                        ),
+                                        Spacer(),
+                                        (index == selectedIndex)
+                                            ? Icon(Icons.check)
+                                            : Icon(null),
+                                      ],
+                                    )),
+                              ),
+                              CustomDivider(),
+                            ],
+                          );
+
                           // );
                         }),
                       ],
@@ -186,6 +189,97 @@ Future foodPrefrenceBottomPullup(BuildContext context) {
       });
 }
 
+class Drinking extends StatefulWidget {
+  int selectedIndex;
+  ScrollController controller;
+
+  Drinking({Key key, this.controller, this.selectedIndex}) : super(key: key);
+  @override
+  _DrinkingState createState() => _DrinkingState();
+}
+
+class _DrinkingState extends State<Drinking> {
+
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      children: [
+        Container(
+          margin: EdgeInsets.fromLTRB(
+              (MediaQuery.of(context).size.width - 46) / 2,
+              14,
+              (MediaQuery.of(context).size.width - 46) / 2,
+              0),
+          //alignment: Alignment.center,
+          height: 4,
+          //width: 46,
+          color: Colors.black,
+        ),
+        Container(
+          margin: EdgeInsets.fromLTRB(35, 3, 30, 12),
+          child: GestureDetector(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            child: GestureDetector(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Spacer(),
+                  Text('Done',
+                      //textAlign: TextAlign.right,
+                      style: TextStyle(
+                          color: Color.fromRGBO(45, 138, 224, 1),
+                          fontSize: 17,
+                          fontWeight: FontWeight.w500)),
+                ],
+              ),
+            ),
+          ),
+        ),
+        SizedBox(height: 150),
+        ...List.generate(drinkingList.length, (index) {
+          return Column(children: [
+            InkWell(
+              onTap: () {
+                print(index.toString() + " tapped");
+                if (widget.selectedIndex != index) {
+                  setState(() {
+                    widget.selectedIndex = index;
+                  });
+                }
+                setState(() {
+                  drinkingValue = drinkingList[index];
+                });
+              },
+              child: Container(
+                  color: Colors.white,
+                  margin: EdgeInsets.fromLTRB(44, 10, 44, 0),
+                  width: MediaQuery.of(context).size.width,
+                  child: Row(
+                    children: [
+                      Text(
+                        drinkingList[index],
+                        style: TextStyle(
+                            fontWeight: FontWeight.w700, fontSize: 16),
+                      ),
+                      Spacer(),
+                      (index == widget.selectedIndex) ? Icon(Icons.check) : Icon(null),
+                    ],
+                  )),
+            ),
+            CustomDivider(),
+          ]);
+        }),
+      ],
+      controller: widget.controller,
+    );
+  }
+}
 
 // Future foodPrefrenceBottomPullup(BuildContext context) {
 //   return showModalBottomSheet(
@@ -338,7 +432,7 @@ dynamic lifestyleList = [
 ];
 
 Future lifeStyleBottomPullup(BuildContext context) {
-  int selectedIndex = 2;
+  int selectedIndex;
   return showModalBottomSheet(
       context: context,
       shape: RoundedRectangleBorder(
@@ -407,42 +501,44 @@ Future lifeStyleBottomPullup(BuildContext context) {
                           ),
                         ),
                         SizedBox(height: 150),
-                        
                         ...List.generate(lifestyleList.length, (index) {
-                          return Column(children: [
-                            InkWell(
-                              onTap: () {
-                                print(index.toString() + " tapped");
-                                if (selectedIndex != index) {
+                          return Column(
+                            children: [
+                              InkWell(
+                                onTap: () {
                                   setState1(() {
-                                    selectedIndex = index;
+                                    lifestyleValue = lifestyleList[index];
                                   });
-                                }
-                              },
-                              child: Container(
-                                  color: Colors.white,
-                                  margin: EdgeInsets.fromLTRB(44, 10, 44, 0),
-                                  width: MediaQuery.of(context).size.width,
-                                  child: Row(
-                                    children: [
-                                      Text(
-                                        lifestyleList[index],
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w700,
-                                            fontSize: 16),
-                                      ),
-                                      Spacer(),
-                                      (index == selectedIndex)
-                                          ? Icon(Icons.check)
-                                          : Icon(null),
-                                    ],
-                                  )),
-                            ),
-                            CustomDivider(),
-                          ],);
-                          
-                         
-                            
+                                  print(index.toString() + " tapped");
+                                  if (selectedIndex != index) {
+                                    setState1(() {
+                                      selectedIndex = index;
+                                    });
+                                  }
+                                },
+                                child: Container(
+                                    color: Colors.white,
+                                    margin: EdgeInsets.fromLTRB(44, 10, 44, 0),
+                                    width: MediaQuery.of(context).size.width,
+                                    child: Row(
+                                      children: [
+                                        Text(
+                                          lifestyleList[index],
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w700,
+                                              fontSize: 16),
+                                        ),
+                                        Spacer(),
+                                        (index == selectedIndex)
+                                            ? Icon(Icons.check)
+                                            : Icon(null),
+                                      ],
+                                    )),
+                              ),
+                              CustomDivider(),
+                            ],
+                          );
+
                           // );
                         }),
                       ],
@@ -494,8 +590,6 @@ Future lifeStyleBottomPullup(BuildContext context) {
         );
       });
 }
-
-
 
 // Future lifeStyleBottomPullup(BuildContext context) {
 //   return showModalBottomSheet(
@@ -650,7 +744,7 @@ dynamic chewingTobaccoList = [
 ];
 
 Future chewingTobaccoBottomPullup(BuildContext context) {
-  int selectedIndex = 2;
+  int selectedIndex;
   return showModalBottomSheet(
       context: context,
       shape: RoundedRectangleBorder(
@@ -719,42 +813,44 @@ Future chewingTobaccoBottomPullup(BuildContext context) {
                           ),
                         ),
                         SizedBox(height: 150),
-                        
                         ...List.generate(chewingTobaccoList.length, (index) {
-                          return Column(children: [
-                            InkWell(
-                              onTap: () {
-                                print(index.toString() + " tapped");
-                                if (selectedIndex != index) {
+                          return Column(
+                            children: [
+                              InkWell(
+                                onTap: () {
                                   setState1(() {
-                                    selectedIndex = index;
+                                    tobaccoValue = chewingTobaccoList[index];
                                   });
-                                }
-                              },
-                              child: Container(
-                                  color: Colors.white,
-                                  margin: EdgeInsets.fromLTRB(44, 10, 44, 0),
-                                  width: MediaQuery.of(context).size.width,
-                                  child: Row(
-                                    children: [
-                                      Text(
-                                        chewingTobaccoList[index],
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w700,
-                                            fontSize: 16),
-                                      ),
-                                      Spacer(),
-                                      (index == selectedIndex)
-                                          ? Icon(Icons.check)
-                                          : Icon(null),
-                                    ],
-                                  )),
-                            ),
-                            CustomDivider(),
-                          ],);
-                          
-                         
-                            
+                                  print(index.toString() + " tapped");
+                                  if (selectedIndex != index) {
+                                    setState1(() {
+                                      selectedIndex = index;
+                                    });
+                                  }
+                                },
+                                child: Container(
+                                    color: Colors.white,
+                                    margin: EdgeInsets.fromLTRB(44, 10, 44, 0),
+                                    width: MediaQuery.of(context).size.width,
+                                    child: Row(
+                                      children: [
+                                        Text(
+                                          chewingTobaccoList[index],
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w700,
+                                              fontSize: 16),
+                                        ),
+                                        Spacer(),
+                                        (index == selectedIndex)
+                                            ? Icon(Icons.check)
+                                            : Icon(null),
+                                      ],
+                                    )),
+                              ),
+                              CustomDivider(),
+                            ],
+                          );
+
                           // );
                         }),
                       ],
@@ -816,8 +912,14 @@ dynamic smokingList = [
   "I smoke 7-10/day"
 ];
 
+Future<Null> smokingUpdates(StateSetter updateState, int index) async{
+  updateState((){
+    smokingValue = smokingList[index];
+  });
+}
+
 Future smokingBottomPullup(BuildContext context) {
-  int selectedIndex = 2;
+  int selectedIndex;
   return showModalBottomSheet(
       context: context,
       shape: RoundedRectangleBorder(
@@ -844,7 +946,7 @@ Future smokingBottomPullup(BuildContext context) {
                 // alignment: Alignment.bottomCenter,
                 fit: StackFit.loose,
                 children: [
-                  StatefulBuilder(builder: (context, StateSetter setState1) {
+                  StatefulBuilder(builder: (context, state) {
                     return ListView(
                       children: [
                         Container(
@@ -886,42 +988,45 @@ Future smokingBottomPullup(BuildContext context) {
                           ),
                         ),
                         SizedBox(height: 150),
-                        
                         ...List.generate(smokingList.length, (index) {
-                          return Column(children: [
-                            InkWell(
-                              onTap: () {
-                                print(index.toString() + " tapped");
-                                if (selectedIndex != index) {
-                                  setState1(() {
-                                    selectedIndex = index;
-                                  });
-                                }
-                              },
-                              child: Container(
-                                  color: Colors.white,
-                                  margin: EdgeInsets.fromLTRB(44, 10, 44, 0),
-                                  width: MediaQuery.of(context).size.width,
-                                  child: Row(
-                                    children: [
-                                      Text(
-                                        smokingList[index],
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w700,
-                                            fontSize: 16),
-                                      ),
-                                      Spacer(),
-                                      (index == selectedIndex)
-                                          ? Icon(Icons.check)
-                                          : Icon(null),
-                                    ],
-                                  )),
-                            ),
-                            CustomDivider(),
-                          ],);
-                          
-                         
-                            
+                          return Column(
+                            children: [
+                              InkWell(
+                                onTap: () {
+                                  smokingUpdates(state, index);
+                                  // setState1(() {
+                                  //   smokingValue = smokingList[index];
+                                  // });
+                                  print(index.toString() + " tapped");
+                                  if (selectedIndex != index) {
+                                    state(() {
+                                      selectedIndex = index;
+                                    });
+                                  }
+                                },
+                                child: Container(
+                                    color: Colors.white,
+                                    margin: EdgeInsets.fromLTRB(44, 10, 44, 0),
+                                    width: MediaQuery.of(context).size.width,
+                                    child: Row(
+                                      children: [
+                                        Text(
+                                          smokingList[index],
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w700,
+                                              fontSize: 16),
+                                        ),
+                                        Spacer(),
+                                        (index == selectedIndex)
+                                            ? Icon(Icons.check)
+                                            : Icon(null),
+                                      ],
+                                    )),
+                              ),
+                              CustomDivider(),
+                            ],
+                          );
+
                           // );
                         }),
                       ],
@@ -974,10 +1079,6 @@ Future smokingBottomPullup(BuildContext context) {
       });
 }
 
-
-
-
-
 dynamic drinkingList = [
   "I don't drink",
   "I have tried",
@@ -986,8 +1087,14 @@ dynamic drinkingList = [
   "I drink regularly"
 ];
 
+String drinkingValue = '';
+String smokingValue = '';
+String tobaccoValue = '';
+String lifestyleValue = '';
+String foodPreferenceValue = '';
+
 Future drinkingBottomPopup(BuildContext context) {
-  int selectedIndex = 2;
+  int selectedIndex;
   return showModalBottomSheet(
       context: context,
       shape: RoundedRectangleBorder(
@@ -1014,85 +1121,7 @@ Future drinkingBottomPopup(BuildContext context) {
                 // alignment: Alignment.bottomCenter,
                 fit: StackFit.loose,
                 children: [
-                  StatefulBuilder(builder: (context, StateSetter setState1) {
-                    return ListView(
-                      children: [
-                        Container(
-                          margin: EdgeInsets.fromLTRB(
-                              (MediaQuery.of(context).size.width - 46) / 2,
-                              14,
-                              (MediaQuery.of(context).size.width - 46) / 2,
-                              0),
-                          //alignment: Alignment.center,
-                          height: 4,
-                          //width: 46,
-                          color: Colors.black,
-                        ),
-                        Container(
-                          margin: EdgeInsets.fromLTRB(35, 3, 30, 12),
-                          child: GestureDetector(
-                            onTap: () {
-                              Navigator.pop(context);
-                            },
-                            child: GestureDetector(
-                              onTap: () {
-                                Navigator.pop(context);
-                              },
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: [
-                                  Spacer(),
-                                  Text('Done',
-                                      //textAlign: TextAlign.right,
-                                      style: TextStyle(
-                                          color:
-                                              Color.fromRGBO(45, 138, 224, 1),
-                                          fontSize: 17,
-                                          fontWeight: FontWeight.w500)),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(height: 150),
-                        ...List.generate(drinkingList.length, (index) {
-                          return Column(children: [
-                            InkWell(
-                              onTap: () {
-                                print(index.toString() + " tapped");
-                                if (selectedIndex != index) {
-                                  setState1(() {
-                                    selectedIndex = index;
-                                  });
-                                }
-                              },
-                              child: Container(
-                                  color: Colors.white,
-                                  margin: EdgeInsets.fromLTRB(44, 10, 44, 0),
-                                  width: MediaQuery.of(context).size.width,
-                                  child: Row(
-                                    children: [
-                                      Text(
-                                        drinkingList[index],
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w700,
-                                            fontSize: 16),
-                                      ),
-                                      Spacer(),
-                                      (index == selectedIndex)
-                                          ? Icon(Icons.check)
-                                          : Icon(null),
-                                    ],
-                                  )),
-                            ),
-                            CustomDivider(),
-                          ]);
-                        }),
-                      ],
-                      controller: controller,
-                    );
-                  }),
+                  Drinking(controller: controller, selectedIndex: selectedIndex,),
                   Positioned(
                     bottom: 0,
                     child: BlurryContainer(
@@ -1248,4 +1277,8 @@ Future newShowModalBottomSheet(BuildContext context) {
           },
         );
       });
+}
+
+abstract class SetTheState {
+  void onClick();
 }
